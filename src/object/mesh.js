@@ -7,6 +7,16 @@ class Mesh {
     this.material = material
   }
 
+  mirror(x, y, z) {
+    this.vertices = this.vertices.map(
+      v => new Vector3(v.x * x, v.y * y, v.z * z)
+    )
+  }
+
+  flip() {
+    this.faces = this.faces.map(face => [face[0], face[2], face[1]])
+  }
+
   resize(factor) {
     this.vertices = this.vertices.map(v => v.multiply(factor))
   }
