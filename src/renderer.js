@@ -132,8 +132,9 @@ class Renderer3D {
   #applyPerspective() {
     const camera = this.camera
     const factor = 1 / Math.tan(toRadians(camera.fov / 2))
-    const factorX = factor * this.viewWidth
-    const factorY = factor * this.viewHeight
+    const aspect = this.viewWidth / this.viewHeight
+    const factorX = factor * this.viewWidth / aspect
+    const factorY = factor * this.viewHeight 
     const screenOffset = this.viewCenter
     
     for (let i = 0; i < this.verticesLength; i++) {
@@ -143,6 +144,7 @@ class Renderer3D {
       p.y = p.y * factorY / p.z + screenOffset.y
     }
   }
+
 
   #applyZBuffer() {
     this.zBuffer = []
