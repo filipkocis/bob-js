@@ -91,7 +91,9 @@ class Renderer3D {
         const reflection = normal.multiply(2 * nDotL).subtract(L).normalize()
         const rDotV = Math.max(reflection.dot(view), 0)
         const specular = kS.multiplyV(intensity).multiply(Math.pow(rDotV, material.shininess)).multiply(attenuation)
-        specularTerm = specularTerm.add(specular)
+        if (nDotL > 0) {
+          specularTerm = specularTerm.add(specular)
+        }
       }
 
       const finalColor = ambientTerm.add(diffuseTerm).add(specularTerm).multiplyAr(color)
