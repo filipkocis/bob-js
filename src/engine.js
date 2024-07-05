@@ -10,10 +10,11 @@ class Engine {
     // this.entities = getFloor(50, 20) 
     // this.entities = applyNoiseToFloor(getFloor(50, 20)) 
     // this.entities = getNoisyFloor(100, 20, 30) 
-    // this.entities = getPeakyNoiseFloor(50, 20, 100, 10, [0.8, 0.0002, 0.00005]) 
+    // this.entities = getPeakyNoiseFloor(50, 20, 100, 10, [0.5, 0.0002, 0.00005]) 
     // this.entities = triangles
     // this.entities.push(getHouse(0,0,0))
-    this.entities = objObj()
+    // this.entities = objObj()
+    this.entities = [...getPeakyNoiseFloor(50, 20, 100, 10, [0.5, 0.0002, 0.00005]), ...objObj()]
 
     this.fps = 0
     this.avgFps = 0
